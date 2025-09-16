@@ -6,4 +6,9 @@ This is a simple C++ project demonstrating **basic memory handling**:
 - Arrays on the heap
 - Modern C++ smart pointers (`unique_ptr`, `shared_ptr`)
 
-## 📂 Project Structure
+cmake_minimum_required(VERSION 3.10)
+project(MemoryHandling)
+
+set(CMAKE_CXX_STANDARD 17)
+
+add_executable(memory-handling src/main.cpp)
