@@ -1,1 +1,47 @@
+#include <iostream>
+#include <memory> // For smart pointers
+
+// Function using raw pointers
+void rawMemoryExample() {
+    std::cout << "=== Raw Memory Example ===\n";
+
+    // Allocate memory for a single integer
+    int* number = new int(42);
+    std::cout << "Value: " << *number << std::endl;
+
+    // Free the memory
+    delete number;
+
+    // Allocate memory for an array
+    int* arr = new int[5];
+    for (int i = 0; i < 5; i++) {
+        arr[i] = i * 10;
+        std::cout << "arr[" << i << "] = " << arr[i] << std::endl;
+    }
+
+    // Free the array
+    delete[] arr;
+}
+
+// Function using smart pointers
+void smartPointerExample() {
+    std::cout << "\n=== Smart Pointer Example ===\n";
+
+    // unique_ptr automatically manages memory
+    std::unique_ptr<int> numPtr = std::make_unique<int>(100);
+    std::cout << "Value: " << *numPtr << std::endl;
+
+    // shared_ptr can be shared across multiple owners
+    std::shared_ptr<int> sharedNum = std::make_shared<int>(200);
+    std::shared_ptr<int> sharedNum2 = sharedNum; // Both point to same memory
+    std::cout << "Shared value: " << *sharedNum << std::endl;
+    std::cout << "Shared use count: " << sharedNum.use_count() << std::endl;
+}
+
+int main() {
+    rawMemoryExample();
+    smartPointerExample();
+
+    return 0;
+}
 
